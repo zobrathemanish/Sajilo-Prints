@@ -1,11 +1,13 @@
 package com.beingdev.magicprint.models;
 
+import android.support.annotation.Keep;
+
 import java.io.Serializable;
 
 /**
- * Created by kshitij on 19/1/18.
+ * Created by Manish on 19/1/18.
  */
-
+@Keep
 public class SingleProductModel implements Serializable {
 
     private int prid,no_of_items;

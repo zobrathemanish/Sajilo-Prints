@@ -82,7 +82,7 @@ public class Stationary extends AppCompatActivity {
                     tv_no_item.setVisibility(View.GONE);
                 }
                 viewHolder.cardname.setText(model.getCardname());
-                viewHolder.cardprice.setText("₹ " + Float.toString(model.getCardprice()));
+                viewHolder.cardprice.setText("NRs. " + Float.toString(model.getCardprice()));
                 Picasso.with(Stationary.this).load(model.getCardimage()).into(viewHolder.cardimage);
 
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {

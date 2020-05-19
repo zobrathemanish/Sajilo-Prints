@@ -1,5 +1,6 @@
 package com.beingdev.magicprint.prodcutscategory;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,11 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-/**
- * Created by kshitij on 22/1/18.
- */
-
-public class Tshirts extends AppCompatActivity {
+public class in_Stationary extends AppCompatActivity {
 
 
     //created for firebaseui android tutorial by Vamsi Tallapudi
@@ -43,7 +40,7 @@ public class Tshirts extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cards);
+        setContentView(R.layout.activity_in_stationary);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -65,30 +62,30 @@ public class Tshirts extends AppCompatActivity {
             mRecyclerView.setHasFixedSize(true);
         }
         //using staggered grid pattern in recyclerview
-        mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         //Say Hello to our new FirebaseUI android Element, i.e., FirebaseRecyclerAdapter
-        final FirebaseRecyclerAdapter<GenericProductModel,Cards.MovieViewHolder> adapter = new FirebaseRecyclerAdapter<GenericProductModel, Cards.MovieViewHolder>(
+        final FirebaseRecyclerAdapter<GenericProductModel,MovieViewHolder> adapter = new FirebaseRecyclerAdapter<GenericProductModel, MovieViewHolder>(
                 GenericProductModel.class,
                 R.layout.cards_cardview_layout,
-                Cards.MovieViewHolder.class,
+                MovieViewHolder.class,
                 //referencing the node where we want the database to store the data from our Object
-                mDatabaseReference.child("Products").child("Tshirt").getRef()
+                mDatabaseReference.child("Products").child("Cards").getRef()
         ) {
             @Override
-            protected void populateViewHolder(final Cards.MovieViewHolder viewHolder, final GenericProductModel model, final int position) {
+            protected void populateViewHolder(final MovieViewHolder viewHolder, final GenericProductModel model, final int position) {
                 if(tv_no_item.getVisibility()== View.VISIBLE){
                     tv_no_item.setVisibility(View.GONE);
                 }
                 viewHolder.cardname.setText(model.getCardname());
-                viewHolder.cardprice.setText("₹ "+Float.toString(model.getCardprice()));
-                Picasso.with(Tshirts.this).load(model.getCardimage()).into(viewHolder.cardimage);
+                viewHolder.cardprice.setText("NRs."+Float.toString(model.getCardprice()));
+                Picasso.with(in_Stationary.this).load(model.getCardimage()).into(viewHolder.cardimage);
 
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(Tshirts.this,IndividualProduct.class);
+                        Intent intent = new Intent(in_Stationary.this,Cards.class);
                         intent.putExtra("product",getItem(position));
                         startActivity(intent);
                     }
@@ -103,7 +100,7 @@ public class Tshirts extends AppCompatActivity {
     }
 
     public void viewCart(View view) {
-        startActivity(new Intent(Tshirts.this,Cart.class));
+        startActivity(new Intent(in_Stationary.this,Cards.class));
         finish();
     }
 
@@ -126,7 +123,7 @@ public class Tshirts extends AppCompatActivity {
     }
 
     public void Notifications(View view) {
-        startActivity(new Intent(Tshirts.this,NotificationActivity.class));
+        startActivity(new Intent(in_Stationary.this,NotificationActivity.class));
         finish();
     }
 

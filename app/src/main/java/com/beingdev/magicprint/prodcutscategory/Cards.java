@@ -66,6 +66,7 @@ public class Cards extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         //Say Hello to our new FirebaseUI android Element, i.e., FirebaseRecyclerAdapter
+
         final FirebaseRecyclerAdapter<GenericProductModel,MovieViewHolder> adapter = new FirebaseRecyclerAdapter<GenericProductModel, MovieViewHolder>(
                 GenericProductModel.class,
                 R.layout.cards_cardview_layout,
@@ -79,7 +80,7 @@ public class Cards extends AppCompatActivity {
                     tv_no_item.setVisibility(View.GONE);
                 }
                 viewHolder.cardname.setText(model.getCardname());
-                viewHolder.cardprice.setText("Rs."+Float.toString(model.getCardprice()));
+                viewHolder.cardprice.setText("NRs."+Float.toString(model.getCardprice()));
                 Picasso.with(Cards.this).load(model.getCardimage()).into(viewHolder.cardimage);
 
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +99,7 @@ public class Cards extends AppCompatActivity {
         mRecyclerView.setAdapter(adapter);
 
     }
+
 
     public void viewCart(View view) {
         startActivity(new Intent(Cards.this,Cart.class));

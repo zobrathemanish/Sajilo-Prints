@@ -1,9 +1,11 @@
 package com.beingdev.magicprint.models;
 
+import android.support.annotation.Keep;
+
 /**
  * Created by kshitij on 22/1/18.
  */
-
+@Keep
 public class PlacedOrderModel {
 
     private String orderid,no_of_items,total_amount,delivery_date,payment_mode,deleiveryname,deliveryemail,deliverymobile_no,deliveryaddress,deliverypincode;

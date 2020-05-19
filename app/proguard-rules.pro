@@ -61,11 +61,23 @@
 -keep class com.beingdev.magicprint.prodcutscategory.Cards$* { *; }
 -keep class com.beingdev.magicprint.prodcutscategory.Keychains$* { *; }
 -keep class com.beingdev.magicprint.prodcutscategory.Stationary$* { *; }
--keep class com.beingdev.magicprint.prodcutscategory.Tshirts$* { *; }
+-keep class com.beingdev.magicprint.prodcutscategory.Photobooks$* { *; }
+-keep class com.beingdev.magicprint.Cart$* { *; }
+-keep class com.beingdev.magicprint.Wishlist$* { *; }
+-keep class com.beingdev.magicprint.OrderDetails$* { *; }
+-keep class com.beingdev.magicprint.OrderPlaced$* { *; }
+
+
+
 
 -keep class com.beingdev.magicprint.prodcutscategory.Bags** { *; }
 -keep class com.beingdev.magicprint.prodcutscategory.Calendars** { *; }
 -keep class com.beingdev.magicprint.prodcutscategory.Cards** { *; }
 -keep class com.beingdev.magicprint.prodcutscategory.Keychains** { *; }
 -keep class com.beingdev.magicprint.prodcutscategory.Stationary** { *; }
--keep class com.beingdev.magicprint.prodcutscategory.Tshirts** { *; }
+-keep class com.beingdev.magicprint.prodcutscategory.Photobooks** { *; }
+-keep class com.beingdev.magicprint.Cart** { *; }
+-keep class com.beingdev.magicprint.Wishlist** { *; }
+-keep class com.beingdev.magicprint.OrderDetails** { *; }
+-keep class com.beingdev.magicprint.OrderPlaced** { *; }
+

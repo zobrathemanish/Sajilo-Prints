@@ -2,7 +2,9 @@ package com.beingdev.magicprint;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Keep;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +25,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+
 
 public class Cart extends AppCompatActivity {
 
@@ -84,7 +88,8 @@ public class Cart extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         if(session.getCartValue()>0) {
-            populateRecyclerView();
+              populateRecyclerView();
+
         }else if(session.getCartValue() == 0)  {
             tv_no_item.setVisibility(View.GONE);
             activitycartlist.setVisibility(View.GONE);
@@ -92,7 +97,7 @@ public class Cart extends AppCompatActivity {
         }
     }
 
-    private void populateRecyclerView() {
+    public void populateRecyclerView() {
 
         //Say Hello to our new FirebaseUI android Element, i.e., FirebaseRecyclerAdapter
         final FirebaseRecyclerAdapter<SingleProductModel,MovieViewHolder> adapter = new FirebaseRecyclerAdapter<SingleProductModel, MovieViewHolder>(
@@ -101,20 +106,24 @@ public class Cart extends AppCompatActivity {
                 MovieViewHolder.class,
                 //referencing the node where we want the database to store the data from our Object
                 mDatabaseReference.child("cart").child(mobile).getRef()
+
         ) {
+
             @Override
+            @Keep
             protected void populateViewHolder(final MovieViewHolder viewHolder, final SingleProductModel model, final int position) {
                 if(tv_no_item.getVisibility()== View.VISIBLE){
                     tv_no_item.setVisibility(View.GONE);
                 }
                 viewHolder.cardname.setText(model.getPrname());
-                viewHolder.cardprice.setText("₹ "+model.getPrprice());
+                viewHolder.cardprice.setText("NRs."+model.getPrprice());
                 viewHolder.cardcount.setText("Quantity : "+model.getNo_of_items());
                 Picasso.with(Cart.this).load(model.getPrimage()).into(viewHolder.cardimage);
 
                 totalcost += model.getNo_of_items()*Float.parseFloat(model.getPrprice());
                 totalproducts += model.getNo_of_items();
                 cartcollect.add(model);
+
 
                 viewHolder.carddelete.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -130,6 +139,8 @@ public class Cart extends AppCompatActivity {
         };
         mRecyclerView.setAdapter(adapter);
     }
+
+
 
     public void checkout(View view) {
         Intent intent = new Intent(Cart.this,OrderDetails.class);

@@ -1,11 +1,13 @@
 package com.beingdev.magicprint.models;
 
+import android.support.annotation.Keep;
+
 import java.io.Serializable;
 
 /**
  * Created by kshitij on 16/1/18.
  */
-
+@Keep
 public class GenericProductModel implements Serializable {
 
     public int cardid;

@@ -2,11 +2,14 @@ package com.beingdev.magicprint;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Keep;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -49,6 +52,8 @@ public class OrderDetails extends AppCompatActivity {
     @BindView(R.id.orderpincode)
     MaterialEditText orderpincode;
 
+
+
     private ArrayList<SingleProductModel> cartcollect;
     private String payment_mode="COD",order_reference_id;
     private String placed_user_name,getPlaced_user_email,getPlaced_user_mobile_no;
@@ -56,13 +61,15 @@ public class OrderDetails extends AppCompatActivity {
     private HashMap<String,String> user;
     private DatabaseReference mDatabaseReference;
     private String currdatetime;
+    private ImageView payment;
 
-    @Override
+  // @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_details);
         ButterKnife.bind(this);
 
+       // payment = (ImageView)findViewById(R.id.paymentSubmit);
 
         //check Internet Connection
         new CheckInternetConnection(this).checkConnection();
@@ -82,7 +89,38 @@ public class OrderDetails extends AppCompatActivity {
 
         productdetails();
 
+//        payment.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//
+//                if (validateFields(view)) {
+//
+//                    order_reference_id = getordernumber();
+//
+//                    //adding user details to the database under orders table
+//                    mDatabaseReference.child("orders").child(getPlaced_user_mobile_no).child(currdatetime).push().setValue(getProductObject());
+//
+//                    //adding products to the order
+//                    for(SingleProductModel model:cartcollect){
+//                        mDatabaseReference.child("orders").child(getPlaced_user_mobile_no).child(currdatetime).child("items").push().setValue(model);
+//                    }
+//
+//                    mDatabaseReference.child("cart").child(getPlaced_user_mobile_no).removeValue();
+//                    session.setCartValue(0);
+//
+//                    Intent intent = new Intent(OrderDetails.this, OrderPlaced.class);
+//                    intent.putExtra("orderid",order_reference_id);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//
+//            }
+//        });
+
     }
+
+
 
     private void productdetails() {
 
@@ -126,6 +164,9 @@ public class OrderDetails extends AppCompatActivity {
         return true;
     }
 
+
+
+    @Keep
     public void PlaceOrder(View view) {
 
         if (validateFields(view)) {
@@ -134,7 +175,7 @@ public class OrderDetails extends AppCompatActivity {
 
             //adding user details to the database under orders table
             mDatabaseReference.child("orders").child(getPlaced_user_mobile_no).child(currdatetime).push().setValue(getProductObject());
-
+//
             //adding products to the order
             for(SingleProductModel model:cartcollect){
                 mDatabaseReference.child("orders").child(getPlaced_user_mobile_no).child(currdatetime).child("items").push().setValue(model);
@@ -166,10 +207,10 @@ public class OrderDetails extends AppCompatActivity {
         } else if (!orderemail.getText().toString().contains("@") || !orderemail.getText().toString().contains(".")) {
             orderemail.setError("Email must contain @ and .");
             return false;
-        } else if (ordernumber.getText().toString().length() < 4 || ordernumber.getText().toString().length() > 12) {
+        } else if (ordernumber.getText().toString().length() != 10) {
             ordernumber.setError("Number Must consist of 10 characters");
             return false;
-        } else if (orderpincode.getText().toString().length() < 6 || ordernumber.getText().toString().length() > 8){
+        } else if (orderpincode.getText().toString().length() !=6 ){
             orderpincode.setError("Pincode must be of 6 digits");
             return false;
         }

@@ -135,7 +135,7 @@
                     <android.support.v7.widget.CardView
                         style="@style/homegridcard"
                         card_view:cardCornerRadius="@dimen/card_album_radius"
-                        android:onClick="tshirtActivity">
+                        android:onClick="photobookActivity">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -240,7 +240,7 @@
 
                     <android.support.v7.widget.CardView
                         style="@style/homegridcard"
-                        card_view:cardCornerRadius="@dimen/card_album_radius"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        card_view:cardCornerRadius="@dimen/card_album_radius"
                         android:onClick="keychainsActivity">
 
                         <RelativeLayout
@@ -314,7 +314,7 @@
                         <TextView
                             style="@style/homegridtext"
                             android:layout_below="@id/GreetingCards"
-                            android:text="Greeting Cards" />
+                            android:text="Wearables" />
 
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>

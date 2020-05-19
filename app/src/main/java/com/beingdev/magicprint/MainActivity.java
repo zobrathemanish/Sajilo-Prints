@@ -18,7 +18,8 @@ import com.beingdev.magicprint.prodcutscategory.Calendars;
 import com.beingdev.magicprint.prodcutscategory.Cards;
 import com.beingdev.magicprint.prodcutscategory.Keychains;
 import com.beingdev.magicprint.prodcutscategory.Stationary;
-import com.beingdev.magicprint.prodcutscategory.Tshirts;
+import com.beingdev.magicprint.prodcutscategory.Photobooks;
+import com.beingdev.magicprint.prodcutscategory.in_Stationary;
 import com.beingdev.magicprint.usersession.UserSession;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
@@ -412,8 +413,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, Cards.class));
     }
 
-    public void tshirtActivity(View view) {
-        startActivity(new Intent(MainActivity.this, Tshirts.class));
+    public void photobookActivity(View view) {
+        startActivity(new Intent(MainActivity.this, Photobooks.class));
     }
 
 
@@ -425,7 +426,14 @@ public class MainActivity extends AppCompatActivity {
     public void stationaryAcitivity(View view) {
 
         startActivity(new Intent(MainActivity.this, Stationary.class));
+
     }
+
+//    public void tshirtActivity(View view) {
+//
+//        startActivity(new Intent(MainActivity.this, Stationary.class));
+//
+//    }
 
     public void calendarsActivity(View view) {
 

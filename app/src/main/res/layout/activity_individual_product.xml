@@ -248,11 +248,48 @@
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 android:orientation="vertical">
+
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Click below to upload your images"
+                    android:textSize="16dp"
+                    android:textColor="@color/gen_black"/>
+
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-------"
+                    android:textSize="16dp"
+                    android:textColor="@color/gen_black"/>
+
+                <ImageView
+                    android:id="@+id/uploadpics"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:elevation="4dp"
+                    android:layout_alignBottom="@+id/profilepic"
+                    android:layout_alignRight="@+id/profilepic"
+                    android:src="@drawable/uploadpicdark"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/upload_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:orientation="vertical">
+
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Details"
                     android:textSize="16dp"
                     android:textColor="@color/gen_black"/>
+
                 <TextView
                     android:id="@+id/productdesc"
                     android:layout_width="wrap_content"
@@ -271,7 +308,7 @@
 
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your Custom Message"
+                android:text="Help us on giving more information by filling up the below form"
                 android:textSize="16dp"
                 android:textColor="@color/gen_black"
                 android:layout_margin="10dp"/>

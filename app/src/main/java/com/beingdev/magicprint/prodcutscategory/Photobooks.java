@@ -26,7 +26,7 @@ import com.squareup.picasso.Picasso;
  * Created by kshitij on 22/1/18.
  */
 
-public class Keychains extends AppCompatActivity {
+public class Photobooks extends AppCompatActivity {
 
 
     //created for firebaseui android tutorial by Vamsi Tallapudi
@@ -69,27 +69,27 @@ public class Keychains extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         //Say Hello to our new FirebaseUI android Element, i.e., FirebaseRecyclerAdapter
-        final FirebaseRecyclerAdapter<GenericProductModel, Cards.MovieViewHolder> adapter = new FirebaseRecyclerAdapter<GenericProductModel, Cards.MovieViewHolder>(
+        final FirebaseRecyclerAdapter<GenericProductModel,Cards.MovieViewHolder> adapter = new FirebaseRecyclerAdapter<GenericProductModel, Cards.MovieViewHolder>(
                 GenericProductModel.class,
                 R.layout.cards_cardview_layout,
                 Cards.MovieViewHolder.class,
                 //referencing the node where we want the database to store the data from our Object
-                mDatabaseReference.child("Products").child("Keychain").getRef()
+                mDatabaseReference.child("Products").child("Tshirt").getRef()
         ) {
             @Override
             protected void populateViewHolder(final Cards.MovieViewHolder viewHolder, final GenericProductModel model, final int position) {
-                if (tv_no_item.getVisibility() == View.VISIBLE) {
+                if(tv_no_item.getVisibility()== View.VISIBLE){
                     tv_no_item.setVisibility(View.GONE);
                 }
                 viewHolder.cardname.setText(model.getCardname());
-                viewHolder.cardprice.setText("NRs. " + Float.toString(model.getCardprice()));
-                Picasso.with(Keychains.this).load(model.getCardimage()).into(viewHolder.cardimage);
+                viewHolder.cardprice.setText("NRs. "+Float.toString(model.getCardprice()));
+                Picasso.with(Photobooks.this).load(model.getCardimage()).into(viewHolder.cardimage);
 
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(Keychains.this, IndividualProduct.class);
-                        intent.putExtra("product", getItem(position));
+                        Intent intent = new Intent(Photobooks.this,IndividualProduct.class);
+                        intent.putExtra("product",getItem(position));
                         startActivity(intent);
                     }
                 });
@@ -97,28 +97,28 @@ public class Keychains extends AppCompatActivity {
         };
 
 
+
         mRecyclerView.setAdapter(adapter);
 
     }
 
     public void viewCart(View view) {
-        startActivity(new Intent(Keychains.this, Cart.class));
+        startActivity(new Intent(Photobooks.this,Cart.class));
         finish();
     }
 
 
     //viewHolder for our Firebase UI
-    public static class MovieViewHolder extends RecyclerView.ViewHolder {
+    public static class MovieViewHolder extends RecyclerView.ViewHolder{
 
         TextView cardname;
         ImageView cardimage;
         TextView cardprice;
 
         View mView;
-
         public MovieViewHolder(View v) {
             super(v);
-            mView = v;
+            mView =v;
             cardname = v.findViewById(R.id.cardcategory);
             cardimage = v.findViewById(R.id.cardimage);
             cardprice = v.findViewById(R.id.cardprice);
@@ -126,7 +126,7 @@ public class Keychains extends AppCompatActivity {
     }
 
     public void Notifications(View view) {
-        startActivity(new Intent(Keychains.this, NotificationActivity.class));
+        startActivity(new Intent(Photobooks.this,NotificationActivity.class));
         finish();
     }
 
