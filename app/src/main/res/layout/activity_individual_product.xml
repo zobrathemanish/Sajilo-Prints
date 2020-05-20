@@ -270,10 +270,10 @@
                     android:layout_alignRight="@+id/profilepic"
                     android:src="@drawable/uploadpicdark"/>
 
-                <android.support.v7.widget.RecyclerView
+                <androidx.appcompat.widget.RecyclerView
                     android:id="@+id/upload_list"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+                    android:layout_height="match_parent"></androidx.appcompat.widget.RecyclerView>
 
             </LinearLayout>
 

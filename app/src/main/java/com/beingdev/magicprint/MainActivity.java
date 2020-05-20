@@ -3,10 +3,10 @@ package com.beingdev.magicprint;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.view.GravityCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -19,7 +19,6 @@ import com.beingdev.magicprint.prodcutscategory.Cards;
 import com.beingdev.magicprint.prodcutscategory.Keychains;
 import com.beingdev.magicprint.prodcutscategory.Stationary;
 import com.beingdev.magicprint.prodcutscategory.Photobooks;
-import com.beingdev.magicprint.prodcutscategory.in_Stationary;
 import com.beingdev.magicprint.usersession.UserSession;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
@@ -58,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
     //to get user session data
     private UserSession session;
-    private HashMap<String, String> user;
-    private String name, email, photo, mobile;
+    private String name;
+    private String email;
+    private String photo;
     private String  first_time;
 
 
@@ -171,11 +171,11 @@ public class MainActivity extends AppCompatActivity {
         session.isLoggedIn();
 
         //get User details if logged in
-        user = session.getUserDetails();
+        HashMap<String, String> user = session.getUserDetails();
 
         name = user.get(UserSession.KEY_NAME);
         email = user.get(UserSession.KEY_EMAIL);
-        mobile = user.get(UserSession.KEY_MOBiLE);
+        String mobile = user.get(UserSession.KEY_MOBiLE);
         photo = user.get(UserSession.KEY_PHOTO);
     }
 

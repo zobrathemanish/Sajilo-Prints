@@ -1,6 +1,6 @@
 package com.beingdev.magicprint.models;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 
 /**
  * Created by kshitij on 22/1/18.
