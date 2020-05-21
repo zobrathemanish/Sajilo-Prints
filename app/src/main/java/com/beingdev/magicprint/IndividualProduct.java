@@ -27,6 +27,8 @@ import com.beingdev.magicprint.usersession.UserSession;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -78,6 +80,10 @@ public class IndividualProduct extends AppCompatActivity {
     private UserSession session;
     private GenericProductModel model;
     private DatabaseReference mDatabaseReference;
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    private StorageReference mStorage = storage.getReference();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,20 +172,17 @@ public class IndividualProduct extends AppCompatActivity {
                     fileDoneList.add("uploading");
                     uploadListAdapter.notifyDataSetChanged();
 
-//                    StorageReference fileToUpload = mStorage.child("Images").child(fileName);
-//
-//                    final int finalI = i;
-//                    fileToUpload.putFile(fileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//
-//                            fileDoneList.remove(finalI);
-//                            fileDoneList.add(finalI, "done");
-//
-//                            uploadListAdapter.notifyDataSetChanged();
-//
-//                        }
-                    // });
+                    StorageReference fileToUpload = mStorage.child("Images").child(fileName);
+
+                    final int finalI = i;
+                    fileToUpload.putFile(fileUri).addOnSuccessListener(taskSnapshot -> {
+
+                        fileDoneList.remove(finalI);
+                        fileDoneList.add(finalI, "done");
+
+                        uploadListAdapter.notifyDataSetChanged();
+
+                    });
 
                 }
                 //Toast.makeText(IndividualProduct.this, "Selected Multiple Files", Toast.LENGTH_SHORT).show();

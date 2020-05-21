@@ -129,8 +129,8 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
 
-    //implementation 'com.airbnb.android:lottie:2.2.5'
-    implementation 'com.airbnb.android:lottie:2.7.0'
+    implementation 'com.airbnb.android:lottie:2.2.5'
+    //implementation 'com.airbnb.android:lottie:2.7.0'
 
     implementation 'com.firebaseui:firebase-ui:0.4.4'
 
